@@ -1,0 +1,33 @@
+<section class="contact-details">
+    <form name="contactForm" [formGroup]="contactForm" *ngIf="contactForm && companies">
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Nome Completo</mat-label>
+            <input matInput formControlName="nomeCompleto" required>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" required>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" required>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Empresa</mat-label>
+            <mat-select placeholder="Escolha uma Empresa" formControlName="empresa" required>
+                <mat-option *ngFor="let empresa of companies" [value]="empresa.id">
+                    {{empresa?.nome}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-save" [disabled]="contactForm.invalid || contactForm.pristine || contactForm.controls['empresa'].value == 0"
+            (click)="saveContact()" color="primary">
+            <span>SALVAR</span>
+        </button>
+
+    </form>
+</section>

@@ -1,0 +1,91 @@
+<section class="company-details">
+    <form name="companyForm" [formGroup]="companyForm" *ngIf="companyForm">
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Tipo</mat-label>
+            <mat-select placeholder="Escolha um Tipo" formControlName="tipo" required>
+                <mat-option value="Cliente">Cliente</mat-option>
+                <mat-option value="Fornecedor">Fornecedor</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" required>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Telefone</mat-label>
+            <input matInput formControlName="telefone" required>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Cep</mat-label>
+            <input matInput formControlName="enderecoCep" (blur)="getCep($event)">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Logradouro</mat-label>
+            <input matInput formControlName="enderecoLogradouro">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Número</mat-label>
+            <input matInput formControlName="enderecoNumero">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Complemento</mat-label>
+            <input matInput formControlName="enderecoComplemento">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="enderecoBairro">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="enderecoCidade">
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" floatLabel="always">
+            <mat-label>UF</mat-label>
+            <mat-select placeholder="Escolha um estado" formControlName="enderecoUf">
+                <mat-option value="AC">Acre</mat-option>
+                <mat-option value="AL">Alagoas</mat-option>
+                <mat-option value="AP">Amapá</mat-option>
+                <mat-option value="AM">Amazonas</mat-option>
+                <mat-option value="BA">Bahia</mat-option>
+                <mat-option value="CE">Ceará</mat-option>
+                <mat-option value="DF">Distrito Federal</mat-option>
+                <mat-option value="ES">Espírito Santo</mat-option>
+                <mat-option value="GO">Goiás</mat-option>
+                <mat-option value="MA">Maranhão</mat-option>
+                <mat-option value="MT">Mato Grosso</mat-option>
+                <mat-option value="MS">Mato Grosso do Sul</mat-option>
+                <mat-option value="MG">Minas Gerais</mat-option>
+                <mat-option value="PA">Pará</mat-option>
+                <mat-option value="PB">Paraíba</mat-option>
+                <mat-option value="PR">Paraná</mat-option>
+                <mat-option value="PE">Pernambuco</mat-option>
+                <mat-option value="PI">Piauí</mat-option>
+                <mat-option value="RJ">Rio de Janeiro</mat-option>
+                <mat-option value="RN">Rio Grande do Norte</mat-option>
+                <mat-option value="RS">Rio Grande do Sul</mat-option>
+                <mat-option value="RO">Rondônia</mat-option>
+                <mat-option value="RR">Roraima</mat-option>
+                <mat-option value="SC">Santa Catarina</mat-option>
+                <mat-option value="SP">São Paulo</mat-option>
+                <mat-option value="SE">Sergipe</mat-option>
+                <mat-option value="TO">Tocantins</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button class="btn-save" [disabled]="companyForm.invalid || companyForm.pristine"
+            (click)="saveCompany()" color="primary">
+            <span>SALVAR</span>
+        </button>
+
+    </form>
+</section>

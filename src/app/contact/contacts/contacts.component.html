@@ -1,0 +1,37 @@
+<section class="contacts">
+    <div class="new-contact">
+        <button mat-raised-button color="primary" [routerLink]="['/contatos/novo-contato']">Novo Contato</button>
+    </div>
+    <table mat-table [dataSource]="contacts" class="mat-elevation-z8">
+        <ng-container matColumnDef="nomeCompleto">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let contact"> {{contact.nomeCompleto}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let contact"> {{contact.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+            <th mat-header-cell *matHeaderCellDef> Telefone </th>
+            <td mat-cell *matCellDef="let contact"> <a href="https://api.whatsapp.com/send?phone={{contact.telefone}}">{{contact.telefone}}</a> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="empresa">
+            <th mat-header-cell *matHeaderCellDef> Empresa </th>
+            <td mat-cell *matCellDef="let contact"> {{contact.empresa.nome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let contact">
+                <button mat-raised-button color="primary" [routerLink]="'/contatos/'+contact.id">Editar</button>
+                <button mat-raised-button color="warn" (click)="deleteContact(contact.id)">Excluir</button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let contact; columns: displayedColumns;"></tr>
+    </table>
+</section>
